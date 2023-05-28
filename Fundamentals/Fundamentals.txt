@@ -1,0 +1,162 @@
+1.
+- "10"
+- -1
+- 1
+- false
+- 2
+- 6
+- "9px"
+- "$45"
+- 2
+- NaN
+- "  -9  5"
+- -14
+- 1
+- NaN
+- true
+- false
+- -2
+
+2.
+addition: 3 + 4 = 7 but due to the numbers being formatted as strings they are instead concatenated to "34"
+multiplication: 12 (working correctly)
+division: 0.75 (working correctly)
+subtraction: -1 (workign correctly)
+lessThan1: true (working correctly)
+lessThan2: 30 > 4 so this should return false but due to the numbers being formatted as string javascript checks the first character and compares them (in this case 3 and 4), if one is greater than the other as in this case it will consider that string greater and stop comparing.
+
+3.
+the number 0 is synonymous the the boolean false so it's statement will not print
+the string "0" will be evaluated as true so it's statement will print
+null is evaluated to zero which is synonymous with the boolean false so it's statement will not print
+the number -1 is an integer which is not zero so it is evaluated as true and it's statement will print
+the number 1 is synonymous with the boolean true so it's statement will print
+
+4.
+let a = 2, b = 3;
+let result = `${a} + ${b} is `;
+(a + b < 10) ? result += 'less than 10' : result += 'greater than 10'
+console.log(result)
+
+the += operator adds what follows to the previous variable and assigns that value to the variable
+
+5.
+function expression syntax:
+const sayHello = function(name) {
+    return `Hello ${name}!`;
+}
+
+arrow function syntax:
+const getGreeting = (name) => `Hello ${name}!`;
+
+
+6.
+a/b/c)
+const westley = {
+    name: 'Westley',
+    numFingers: 5
+    }
+    const rugen = {
+    name: 'Count Rugen',
+    numFingers: 6
+    }
+    const inigo = {
+    firstName: 'Inigo',
+    lastName: 'Montoya',
+    greeting(person) {
+    let greeting = `Hello ${person.name}, my name is ${this.firstName} ${this.lastName}. `;
+    console.log(greeting + this.getCatchPhrase(person));
+    },
+    getCatchPhrase : (person) => (person.numFingers === 6 ? 'You killed my father. Prepare to die.' : 'Nice to meet you.')
+    }
+    inigo.greeting(westley)
+    inigo.greeting(rugen)
+
+7.
+const basketballGame = {
+    score: 0,
+    freeThrow() {
+    this.score++;
+    return this
+    },
+    basket() {
+    this.score += 2;
+    return this
+    },
+    threePointer() {
+    this.score += 3;
+    return this
+    },
+    fouls: 0,
+    personalFoul() {
+    this.fouls++
+    return this
+    },
+    halfTime() {
+    console.log('Halftime score is '+this.score + ' and the number of fouls committed is ' +this.fouls);
+    return this
+    },
+    fullTime() {
+    console.log('Fulltime score is ' +this.score + ' and the number of fouls committed is ' +this.fouls);
+    }
+    }
+    basketballGame.basket().freeThrow().personalFoul().personalFoul().freeThrow().basket().threePointer().halfTime().freeThrow().personalFoul().personalFoul().freeThrow().basket().threePointer().fullTime()
+
+8.
+const sydney = {
+    name: 'Sydney',
+    population: 5_121_000,
+    state: 'NSW',
+    founded: '26 January 1788',
+    timezone: 'Australia/Sydney'
+    }
+function aboutCity(city) {
+    for (let key in city) {
+      if (city.hasOwnProperty(key)) {
+        console.log(`${key}: ${city[key]}`);
+        }
+    }
+}
+aboutCity(sydney)
+
+const tokyo = {
+    name: 'Tokyo',
+    numberOfRamenShops: 'Over 10,000',
+    mountains: 224,
+    hasGoodCityPlanning: true
+}
+
+aboutCity(tokyo)
+
+9.
+a/b/c)
+let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
+let dog1 = 'Bingo';
+let cat1 = { name: 'Fluffy', breed: 'Siberian' };
+let moreSports = teamSports
+moreSports.push('Basketball')
+moreSports.unshift('Rugby')
+let dog2 = dog1
+dog2 = 'bongo'
+cat2 = cat1
+cat2.name = 'Floofy'
+console.log(teamSports)
+console.log(dog1)
+console.log(cat1)
+d) teamSports and cat1 have changed because they are arrays and objects respectively and I have made shallow copies of them. dog1 has not changed as creating a new variable and assinging it's value to that of another variable makes a deep copy.
+e)
+let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
+let dog1 = 'Bingo';
+let cat1 = { name: 'Fluffy', breed: 'Siberian' };
+let moreSports = teamSports.slice();
+moreSports.push('Basketball')
+moreSports.unshift('Rugby')
+let dog2 = dog1
+dog2 = 'bongo'
+cat2 = JSON.parse(JSON.stringify(cat1));
+cat2.name = 'Floofy'
+console.log(teamSports)
+console.log(dog1)
+console.log(cat1)
+
+10.
